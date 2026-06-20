@@ -1,15 +1,17 @@
+/* JJ Ruge Sign Co. — paper + stapled card layout */
+
 :root {
-  --paper: #f5ecd9;
-  --panel: rgba(252, 246, 232, 0.94);
-  --panel-2: rgba(247, 239, 223, 0.96);
+  --paper: #f0e2c9;
+  --panel: #f7f0df;
+  --panel-2: #f4ecd9;
   --ink: #241b12;
   --muted: #65594a;
   --line: rgba(36, 27, 18, 0.18);
   --accent: #a3382c;
   --accent-dark: #7f281f;
   --shadow: 0 8px 18px rgba(36, 27, 18, 0.16);
-  --shadow-soft: 0 18px 40px rgba(36, 27, 18, 0.12);
-  --tape: rgba(232, 214, 166, 0.65);
+  --shadow-soft: 0 18px 40px rgba(36, 27, 18, 0.14);
+  --tape: rgba(232, 214, 166, 0.72);
 }
 
 * {
@@ -21,146 +23,135 @@ html {
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.55;
   background-color: #e9dcc5;
-  background-image: url("images/paper-bg.png");
+  background-image:
+    linear-gradient(rgba(255, 248, 232, 0.10), rgba(233, 220, 197, 0.14)),
+    url("images/paper-bg.png");
   background-size: cover;
   background-attachment: fixed;
   background-position: center top;
-  position: relative;
 }
 
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(rgba(255, 248, 232, 0.18), rgba(233, 220, 197, 0.24)),
-    radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(0,0,0,0.04), transparent 35%);
-  opacity: 1;
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.055), transparent 35%);
+  opacity: 0.9;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.28;
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 34.5%,
-      rgba(90, 72, 48, 0.00) 35.2%,
-      rgba(90, 72, 48, 0.15) 35.5%,
-      rgba(255,255,255,0.10) 35.8%,
-      rgba(90, 72, 48, 0.08) 36.2%,
-      transparent 37%
-    ),
-    linear-gradient(
-      112deg,
-      transparent 0%,
-      transparent 63%,
-      rgba(90, 72, 48, 0.00) 64.2%,
-      rgba(90, 72, 48, 0.12) 64.8%,
-      rgba(255,255,255,0.08) 65.2%,
-      rgba(90, 72, 48, 0.06) 65.7%,
-      transparent 67%
-    ),
-    linear-gradient(
-      2deg,
-      transparent 0%,
-      transparent 76%,
-      rgba(90, 72, 48, 0.00) 77%,
-      rgba(90, 72, 48, 0.08) 77.4%,
-      rgba(255,255,255,0.05) 77.8%,
-      rgba(90, 72, 48, 0.04) 78.2%,
-      transparent 79%
-    );
-  mix-blend-mode: multiply;
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 a {
   color: inherit;
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
 .site-header {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 1.25rem 1rem 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1.25rem;
+  padding: clamp(1rem, 3.5vw, 2.1rem) 1rem 0.75rem;
 }
 
-.brand-block {
-  max-width: 560px;
+.card-wrap {
+  position: relative;
+  max-width: 840px;
+  margin: 0 auto 0.85rem;
+  transform: rotate(-0.35deg);
+  filter: drop-shadow(0 18px 22px rgba(36, 27, 18, 0.24));
 }
 
-.logo {
-  display: inline-block;
-  margin-bottom: 0.25rem;
-  color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
+.card-wrap::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 4.1%;
+  top: 6.3%;
+  width: 82px;
+  height: 14px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, #3c3832, #a7a199 20%, #4b463e 45%, #d0cbc3 62%, #34302b);
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.3) inset,
+    0 2px 4px rgba(36, 27, 18, 0.4);
+  opacity: 0.52;
+  transform: rotate(-2deg);
+  pointer-events: none;
 }
 
-.brand-subtitle,
-.brand-location {
-  margin: 0.15rem 0;
-  color: var(--muted);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.88rem;
-  letter-spacing: 0.03em;
+.business-card {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .nav {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.55rem;
-  padding-top: 0.2rem;
+  margin: 0 auto;
 }
 
 .nav a {
   padding: 0.45rem 0.7rem;
   border: 1px solid var(--line);
-  background: rgba(252, 246, 232, 0.75);
+  background: rgba(252, 246, 232, 0.86);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: 0.78rem;
+  font-weight: 900;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  box-shadow: 2px 2px 0 rgba(36, 27, 18, 0.08);
+  letter-spacing: 0.065em;
+  box-shadow: 2px 2px 0 rgba(36, 27, 18, 0.1);
 }
 
 .nav a:hover {
-  background: rgba(255, 250, 240, 0.95);
+  background: rgba(255, 250, 240, 0.98);
   color: var(--accent-dark);
 }
 
 .page-shell {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0.75rem 1rem 3rem;
+  padding: 1.1rem 1rem 3rem;
 }
 
 .panel {
   position: relative;
   background: var(--panel);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(36, 27, 18, 0.14);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    var(--shadow-soft);
 }
 
 .intro-panel,
@@ -172,7 +163,7 @@ a {
 
 .intro-panel {
   max-width: 920px;
-  margin: 0 0 2rem;
+  margin: 0 auto 2rem;
 }
 
 .tape-left::before,
@@ -180,8 +171,8 @@ a {
   content: "";
   position: absolute;
   top: -12px;
-  width: 90px;
-  height: 26px;
+  width: 92px;
+  height: 27px;
   background: var(--tape);
   border: 1px solid rgba(136, 118, 80, 0.18);
   box-shadow: 0 2px 4px rgba(36, 27, 18, 0.08);
@@ -225,14 +216,14 @@ ul {
 h1 {
   max-width: 780px;
   margin-bottom: 0.85rem;
-  font-size: clamp(2rem, 4.8vw, 4rem);
-  line-height: 0.98;
+  font-size: clamp(1.9rem, 4.3vw, 3.55rem);
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 
 h2 {
   margin-bottom: 0.85rem;
-  font-size: clamp(1.55rem, 3.4vw, 2.7rem);
+  font-size: clamp(1.55rem, 3.25vw, 2.55rem);
   line-height: 1.02;
   letter-spacing: -0.025em;
 }
@@ -275,7 +266,7 @@ h3 {
   min-height: 2.6rem;
   padding: 0.7rem 0.95rem;
   border: 1px solid var(--ink);
-  background: rgba(255, 250, 240, 0.88);
+  background: rgba(255, 250, 240, 0.92);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
@@ -316,11 +307,11 @@ h3 {
 }
 
 .rotate-left {
-  transform: rotate(-1deg);
+  transform: rotate(-0.8deg);
 }
 
 .rotate-right {
-  transform: rotate(1deg);
+  transform: rotate(0.8deg);
 }
 
 .work-image {
@@ -328,7 +319,7 @@ h3 {
   min-height: 205px;
   margin-bottom: 0.9rem;
   border: 1px solid var(--line);
-  background: rgba(255, 251, 242, 0.88);
+  background: rgba(255, 251, 242, 0.95);
   box-shadow: inset 0 0 0 1px rgba(36, 27, 18, 0.04);
 }
 
@@ -401,7 +392,13 @@ h3 {
 
 @media (max-width: 900px) {
   .site-header {
-    flex-direction: column;
+    padding-top: 0.8rem;
+  }
+
+  .card-wrap {
+    max-width: 760px;
+    margin-bottom: 0.75rem;
+    transform: none;
   }
 
   .work-grid,
@@ -417,8 +414,24 @@ h3 {
 }
 
 @media (max-width: 640px) {
+  body {
+    background-attachment: scroll;
+  }
+
   .page-shell {
     padding-top: 0.35rem;
+  }
+
+  .card-wrap {
+    width: calc(100% + 1rem);
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    filter: drop-shadow(0 10px 14px rgba(36, 27, 18, 0.2));
+  }
+
+  .card-wrap::before {
+    width: 54px;
+    height: 9px;
   }
 
   .intro-panel,
@@ -429,11 +442,11 @@ h3 {
   }
 
   h1 {
-    font-size: clamp(1.9rem, 9vw, 3rem);
+    font-size: clamp(1.85rem, 8vw, 2.75rem);
   }
 
   h2 {
-    font-size: clamp(1.45rem, 7vw, 2.2rem);
+    font-size: clamp(1.45rem, 7vw, 2.1rem);
   }
 
   .nav {
