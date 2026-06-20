@@ -1,4 +1,4 @@
-/* JJ Ruge Sign Co. — paper + stapled card layout */
+/* JJ Ruge Sign Co. — paper + business-card header */
 
 :root {
   --paper: #f0e2c9;
@@ -80,9 +80,12 @@ a {
 }
 
 .card-wrap {
-  width: min(100%, 470px);
+  width: min(100%, 420px);
   margin: 0 auto 0.85rem;
-  transform: rotate(-0.75deg);
+  transform: rotate(-0.45deg);
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.18))
+    drop-shadow(0 7px 8px rgba(36, 27, 18, 0.22));
 }
 
 .business-card {
@@ -375,9 +378,9 @@ h3 {
   }
 
   .card-wrap {
-    width: min(100%, 440px);
+    width: min(100%, 390px);
     margin-bottom: 0.75rem;
-    transform: rotate(-0.35deg);
+    transform: rotate(-0.25deg);
   }
 
   .work-grid,
@@ -402,10 +405,10 @@ h3 {
   }
 
   .card-wrap {
-    width: min(100%, 360px);
+    width: min(100%, 330px);
     margin-left: auto;
     margin-right: auto;
-    transform: rotate(-0.2deg);
+    transform: rotate(-0.1deg);
   }
 
   .intro-panel,

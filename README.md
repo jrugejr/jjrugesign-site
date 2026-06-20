@@ -1,26 +1,22 @@
-# JJ Ruge Sign Co. site update
+# JJ Ruge Sign Co. update v3
 
-This ZIP contains an updated homepage that uses the uploaded business card as a stapled/pinned header object.
+Changes:
+- removed baked drop-shadow from the business-card PNG
+- uses `business-card-nosshadow.png`
+- adds a smaller, cleaner CSS drop-shadow
+- bumps stylesheet cache-buster to `styles.css?v=7`
 
-## Files
-
-- `index.html`
-- `styles.css`
-- `images/business-card.png`
-- `images/paper-bg.png`
-
-## Upload to GitHub
-
-Upload/replace these files in your `jrugejr/jjrugesign-site` repository.
-
-Expected structure:
+Upload/replace these files in your GitHub repo:
 
 ```text
 index.html
 styles.css
-images/
-  business-card.png
-  paper-bg.png
+images/business-card-nosshadow.png
+images/paper-bg.png
 ```
 
-The stylesheet link uses `styles.css?v=5` to help defeat browser caching.
+You can keep or delete older card files. The active file is:
+
+```text
+images/business-card-nosshadow.png
+```
